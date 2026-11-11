@@ -1,0 +1,36 @@
+Third party code in Helix.Font
+==============================
+
+ThirdParty/stb_truetype/stb_truetype.h
+  stb_truetype v1.26 by Sean Barrett / RAD Game Tools, http://nothings.org/stb
+  Source: https://raw.githubusercontent.com/nothings/stb/master/stb_truetype.h (2026-11-11)
+  SHA-256: ecd30b05e0dd4fea3a13c26810dd9e1992dc379049482c393d5a19e6b5090aab
+  Used for rasterization only (Source/Helix/Font/Raster/Implementation/StbRaster.cpp): stbtt_Rasterize and its
+  prefilter run on outlines read by our own font reader, with float vertices (the file's stbtt_vertex customization
+  point). Its font parser is compiled but never called. The file is unchanged.
+  Of its two licenses, Helix uses alternative B:
+
+  ALTERNATIVE B - Public Domain (www.unlicense.org)
+  This is free and unencumbered software released into the public domain.
+  Anyone is free to copy, modify, publish, use, compile, sell, or distribute this
+  software, either in source code form or as a compiled binary, for any purpose,
+  commercial or non-commercial, and by any means.
+  In jurisdictions that recognize copyright laws, the author or authors of this
+  software dedicate any and all copyright interest in the software to the public
+  domain. We make this dedication for the benefit of the public at large and to
+  the detriment of our heirs and successors. We intend this dedication to be an
+  overt act of relinquishment in perpetuity of all present and future rights to
+  this software under copyright law.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ThirdParty/stb_rect_pack/stb_rect_pack.h
+  stb_rect_pack v1.01 by Sean Barrett, http://nothings.org/stb
+  Source: https://raw.githubusercontent.com/nothings/stb/master/stb_rect_pack.h (2026-11-11)
+  SHA-256: 6388366a30de57c1b4c29b6eed4ed1c7d758fc1443d2dd95cfce943370bb3aa1
+  Used for the skyline packing of glyph atlases (Source/Helix/Font/Atlas/Implementation/FontAtlas.cpp). The file is
+  unchanged. Of its two licenses, Helix uses alternative B, the public domain dedication quoted above (the same text).
