@@ -3198,6 +3198,12 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
                   y_final = y_bottom;
                   dy = (y_final - y_crossing ) / (x2 - (x1+1)); // if denom=0, y_final = y_crossing, so y_final <= y_bottom
                }
+               // Helix: very steep edges far from the origin can put y_final past the segment's end by more than
+               // float error allows (the assert below); clamp it the same way.
+               if (y_final > sy1) {
+                  y_final = sy1;
+                  dy = (y_final - y_crossing ) / (x2 - (x1+1));
+               }
 
                // in second pixel, area covered by line segment found in first pixel
                // is always a rectangle 1 wide * the height of that line segment; this

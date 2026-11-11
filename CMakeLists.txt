@@ -21,3 +21,8 @@ if(TARGET helix_font_bench)
     target_include_directories(helix_font_bench PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Tests)
 endif()
 helix_add_fuzz_suite(helix_font_fuzz DEPS Helix::Font Helix::Image ROUNDS 1000)
+
+# Rounds the long fuzz runs found faults in, replayed on every test run.
+if(TARGET helix_font_fuzz)
+    add_test(NAME helix_font_fuzz_round_254773 COMMAND helix_font_fuzz --target=Glyf --first=254773 --rounds=1)
+endif()

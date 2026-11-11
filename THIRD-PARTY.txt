@@ -7,7 +7,10 @@ ThirdParty/stb_truetype/stb_truetype.h
   SHA-256: ecd30b05e0dd4fea3a13c26810dd9e1992dc379049482c393d5a19e6b5090aab
   Used for rasterization only (Source/Helix/Font/Raster/Implementation/StbRaster.cpp): stbtt_Rasterize and its
   prefilter run on outlines read by our own font reader, with float vertices (the file's stbtt_vertex customization
-  point). Its font parser is compiled but never called. The file is unchanged.
+  point). Its font parser is compiled but never called.
+  Changed in our copy (2026-11-11, found by the 24 h fuzz run, round 254773 of Glyf): in stbtt__fill_active_edges_new
+  a very steep edge far from the origin put y_final past the segment's end sy1 (the assert sy1 > y_final-0.01f);
+  y_final is now clamped to sy1 as it already was to y_bottom. Test: the fuzz round replayed in ctest.
   Of its two licenses, Helix uses alternative B:
 
   ALTERNATIVE B - Public Domain (www.unlicense.org)
